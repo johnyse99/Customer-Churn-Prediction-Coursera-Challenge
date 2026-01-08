@@ -1,0 +1,38 @@
+Column_name,Column_type,Data_type,Description
+subscription_id,Identifier,character,Unique identifier of each subscription
+observation_dt,Identifier,date,The date on which the subscription was observed to calculate the features in the dataset. It was chosen at random amongst all the dates between the start of the subscription and the end of the subscription (before cancellation)
+is_retained,Target,Integer,"TRAINING SET ONLY! 0 = the learner cancelled their subscription before next payment, 1 = the learner made an additional payment in this subscription"
+specialization_id,Feature - Specialization Info,character,Unique identifier of a specialization (each subscription gives a learner access to a particular specialization)
+cnt_courses_in_specialization,Feature - Specialization Info,integer,number of courses in the specialization
+specialization_domain,Feature - Specialization Info,character,"primary domain of the specialization (Computer Science, Data Science, etc.)"
+is_professional_certificate,Feature - Specialization Info,boolean,"BOOLEAN for whether the specialization is a ""professional certicate"" (a special type of specialization that awards completers with an industry-sponsored credential)"
+is_gateway_certificate,Feature - Specialization Info,boolean,"BOOLEAN for whether the specialization is a ""gateway certificate"" (a special type of specialization geared towards learners starting in a new field)"
+learner_days_since_registration,Feature - Learner Info,integer,Days from coursera registration date to the date on which the observation is made
+learner_country_group,Feature - Learner Info,character,"the region of the world that the learner is from (United States, East Asia, etc.)"
+learner_gender,Feature - Learner Info,character,"the reported gender of the learner (if not available, then ""unknown"")"
+learner_cnt_other_courses_active,Feature - Learner Info,integer,Other courses (not in this specialization) in which the learner was active prior to observation_dt
+learner_cnt_other_courses_paid_active,Feature - Learner Info,integer,Other courses (not in this specialization) in which the learner was active prior to observation_dt and was a paid enrollee
+learner_cnt_other_courses_items_completed,Feature - Learner Info,integer,Items completed in other courses (not in this specialization) prior to the observation_dt
+learner_cnt_other_courses_paid_items_completed,Feature - Learner Info,integer,"Items completed in other courses (not in this specialization) prior to the observation_dt, where the learner was a paid enrollee"
+learner_cnt_other_transactions_past,Feature - Learner Info,integer,Other payments that the learner made on Coursera separate from this subscription
+learner_other_revenue,Feature - Learner Info,numeric,US Dollar estimate of other payments that the learner made on Coursera separate from this subscription
+subscription_period_order,Feature - Subscription Status,integer,"An index of the ""month"" of the subcription; 1 = first month of payment, 2 = second month of payment"
+days_since_last_payment,Feature - Subscription Status,integer,Days since the last payment in the subscription
+days_til_next_payment_due,Feature - Subscription Status,integer,Days until the next payment in the subsciption is due
+cnt_enrollments_started_before_payment_period,Feature - Prior Subscription Activity,integer,Courses in the subscription specialization that were enrolled prior to the start of this subscription period
+cnt_enrollments_completed_before_payment_period,Feature - Prior Subscription Activity,integer,Courses in the subscription specialization that were completed prior to the start of this subscription period
+cnt_enrollments_active_before_payment_period,Feature - Prior Subscription Activity,integer,Courses in the subscription specialization that were active prior to the start of this subscription period
+cnt_items_completed_before_payment_period,Feature - Prior Subscription Activity,integer,Items in the subscription specialization that were completed prior to the start of the subscription period
+cnt_graded_items_completed_before_payment_period,Feature - Prior Subscription Activity,integer,Graded items (assignments) in the subscription speciallzation that were completed prior to the start of the subscription period
+is_subscription_started_with_free_trial,Feature - Prior Subscription Activity,boolean,BOOLEAN for whether or not the subscription started with a free trial (7-day period for the learner to sample the specialization before paying)
+cnt_enrollments_started_during_payment_period,Feature - Current Subscription Activity,integer,Courses in the subscription specialization that were enrolled during this subscription period (before observation_dt)
+cnt_enrollments_completed_during_payment_period,Feature - Current Subscription Activity,integer,Courses in the subscription specialization that were completed during this subscription period (before observation_dt)
+cnt_enrollments_active_during_payment_period,Feature - Current Subscription Activity,integer,Courses in the subscription specialization that were active during this subscription period (before observation_dt)
+cnt_items_completed_during_payment_period,Feature - Current Subscription Activity,integer,Items in the subscription specialization that were completed during this subscription period (before observation_dt)
+cnt_graded_items_completed_during_payment_period,Feature - Current Subscription Activity,integer,Graded items (assignments) in the subscription speciallzation that were completed during this subscription period (before observation_dt)
+is_active_capstone_during_pay_period,Feature - Current Subscription Activity,boolean,"BOOLEAN for whether the learner was active in a capstone course during this subscription period. The last course in some specializations is called a ""captone"" course as allows the learner to apply the skills they have learned in the prior courses up to that point."
+sum_hours_learning_before_payment_period,Feature - Current Subscription Activity,numeric,Hours spent learning in subscription specialization courses prior to the subscription period
+sum_hours_learning_during_payment_period,Feature - Current Subscription Activity,numeric,Hours spent learning in subscription specialization courses during the subscription period (before observation_dt)
+cnt_days_active_before_payment_period,Feature - Current Subscription Activity,integer,Days active in the subscription specialization prior to the subscription period
+cnt_days_active_during_payment_period,Feature - Current Subscription Activity,integer,Days active thus far in the subscription period (before observation_dt)
+cnt_days_since_last_activity,Feature - Current Subscription Activity,integer,"Days since the most recent activity date in the subscription (if never active, defaults to the number of days since the start of the subscription)"
